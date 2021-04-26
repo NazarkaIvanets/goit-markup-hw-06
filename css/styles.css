@@ -693,7 +693,7 @@ footer .button {
   font-size: 26px;
   line-height: 1.19;
   letter-spacing: 0.03em;
-  color: #2196f3;
+  color: var(--link-color);
 }
 
 .black-logo {
@@ -702,6 +702,19 @@ footer .button {
 
 .white-logo {
   color: var(--white-color);
+}
+
+.backdrop {
+  position: fixed;
+  z-index: 3;
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  transition: opacity var(--transition-whole);
 }
 
 .backdrop {
@@ -729,25 +742,24 @@ footer .button {
   transform: translate(-50%, -50%);
   min-height: 581px;
   max-width: 528px;
+  padding: 40px 40px;
   border-radius: 4px;
   background-color: var(--white-color);
 }
 
 .btn-modal {
   position: absolute;
-  top: 15px;
-  right: 15px;
+
+  top: 8px;
+  right: 8px;
   width: 30px;
   height: 30px;
   border-radius: 50%;
   background: var(--white-color);
   border: 1px solid rgba(0, 0, 0, 0.1);
+
   transform: scale(1);
   transition: var(--transition-transform);
-}
-
-.modal-button {
-  position: relative;
 }
 
 .btn-icon-close {
@@ -766,7 +778,7 @@ footer .button {
 .btn-modal:hover,
 .btn-modal:focus {
   transform: scale(1.15);
-  /*border: 1px solid rgb(33, 150, 243, 0.5); */
+  /* border: 1px solid rgb(33, 150, 243, 0.5); */
 }
 
 .btn-modal:hover .icon,
@@ -774,25 +786,18 @@ footer .button {
   fill: var(--link-color);
 }
 
-.modal .form {
-  width: 528px;
-  padding: 40px 40px;
-}
-
-.form-label:not(:last-child) {
+.form-label {
   position: relative;
   display: flex;
   flex-direction: column;
 }
 
-.form-label:last-child {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 17px;
-}
-
 .form-label:not(:last-child) {
   margin-bottom: 10px;
+}
+
+.form-label:last-child {
+  margin-bottom: 20px;
 }
 
 .form-label {
@@ -826,15 +831,19 @@ footer .button {
 }
 
 .request-action {
-  display: flex;
-  justify-content: center;
+  display: inline-block;
   margin-bottom: 12px;
   font-size: 20px;
   line-height: 1.15;
   color: var(--title-color);
 }
 
+.request-icon-position {
+  position: relative;
+}
+
 .form-input {
+  position: relative;
   width: 100%;
   height: 40px;
   padding-left: 42px;
@@ -850,7 +859,6 @@ footer .button {
   border: 1px solid rgba(33, 33, 33, 0.2);
   border-radius: 4px;
   outline: none;
-  margin-bottom: 20px;
 }
 
 .form-label-terms {
@@ -862,6 +870,7 @@ footer .button {
 
 .terms-link {
   color: var(--link-color);
+  margin-left: 5px;
 }
 
 .checkbox {
@@ -891,13 +900,22 @@ footer .button {
   background-origin: border-box;
 }
 
-.form-input + .icon {
+.checkbox:focus + .custom-icon {
+  border-color: var(--link-color);
+}
+
+.form-label-button {
+  display: flex;
+  justify-content: center;
+}
+
+.form-request .icon {
   position: absolute;
-  top: 72%;
+  top: 50%;
   left: 14px;
   width: 18px;
   height: 18px;
-  transform: translateY(-72%);
+  transform: translateY(-50%);
 }
 
 .examples-overlay {
@@ -936,8 +954,8 @@ footer .button {
 
 .examples-link:focus .item-examples-overlay,
 .examples-link:hover .item-examples-overlay {
-  opacity: 1;
   transform: translateY(-100%);
+  opacity: 1;
 }
 
 .list {
